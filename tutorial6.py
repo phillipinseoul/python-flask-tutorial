@@ -35,7 +35,7 @@ def user():
 def logout():
     if "user" in session:
         user = session["user"]
-        flash("You have been logged out!", "info")
+        flash(f"You have been logged out, {user}", "info")
     session.pop("user", None)
     return redirect(url_for("login"))
 
