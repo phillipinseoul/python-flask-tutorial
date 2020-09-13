@@ -18,6 +18,9 @@ class users(db.Model):
     name = db.Column(db.String(100))
     email = db.Column(db.String(100))
 
+    def __init__(self, name, email):
+        self.name = name
+        self.email = email
 
 
 @app.route("/")
@@ -65,4 +68,5 @@ def logout():
     return redirect(url_for("login"))
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
