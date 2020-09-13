@@ -31,7 +31,7 @@ def home():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        # session.permanent = True
+        session.permanent = True
         user = request.form["nm"]
         session["user"] = user
 
@@ -57,7 +57,7 @@ def user():
     if "user" in session:
         user = session["user"]
 
-        if request.form == "POST":
+        if request.method == "POST":
             email = request.form["email"]
             session["email"] = email
             found_user = users.query.filter_by(name=user).first()
